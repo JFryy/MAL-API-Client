@@ -5,10 +5,11 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="malclient",
-    version="0.1.2",
+    version="0.1.5",
     author="James Fotherby",
     author_email="fotherby1@gmail.com",
-    description="A small client library for interfacing with MyAnimeList Rest API.",
+    description=
+    "A small client library for interfacing with MyAnimeList Rest API.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Fotherbyy/MAL-API-Client",

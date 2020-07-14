@@ -24,11 +24,10 @@ class MyList():
         uri = f'anime/{anime_id}/my_list_status'
         return self._api_handler.call(method="patch", uri=uri, data=data)
 
-
     # need another function for adding manga to list
     def delete_anime_my_list_status(self, anime_id):
         uri = f'anime/{anime_id}/my_list_status'
-        return(self._api_handler.call("delete"))
+        return (self._api_handler.call("delete"))
 
     def get_user_anime_list(self, username="@me", sort=None):
         uri = f'users/{username}/animelist'
@@ -46,7 +45,6 @@ class MyList():
         params = {"fields": "anime_statistics"}
         return self._api_handler.call(uri)
 
-    
     def update_manga_my_list_status(self, manga_id, data):
         """ 
         Updates myanimelist status for a given manga, takes payload as dictionary as argument. 
@@ -63,12 +61,14 @@ class MyList():
             }
         """
         uri = f'manga/{manga_id}/my_list_status'
-        statuses = ["reading", "completed", "on_hold", "dropped", "plan_to_read"]
+        statuses = [
+            "reading", "completed", "on_hold", "dropped", "plan_to_read"
+        ]
         return self._api_handler.call(method="patch", uri=uri, data=data)
 
     def delete_manga_list_status(self, manga_id):
         uri = f'manga/{manga_id}/my_list_status'
-        return(self._api_handler.call("delete"))
+        return (self._api_handler.call("delete"))
 
     def get_user_manga_list(self, username="@me", sort=None, limit=100):
         uri = f'users/{username}/mangalist'
@@ -80,4 +80,3 @@ class MyList():
             sort = "list_score"
         params = {"sort": sort, "limit": limit, "fields": "list_status"}
         return self._api_handler.call(uri=uri, params=params)
-
