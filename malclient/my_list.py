@@ -4,8 +4,8 @@ class MyList():
         return
 
     def update_anime_my_list_status(self, anime_id, data):
-        """ 
-        Updates myanimelist status for a given anime, takes payload as dictionary as argument. 
+        """
+        Updates myanimelist status for a given anime, takes payload as dictionary as argument.
         Emit fields to not update. Returns response object.
         example input for data:
             data = {
@@ -29,7 +29,7 @@ class MyList():
         uri = f'anime/{anime_id}/my_list_status'
         return (self._api_handler.call("delete"))
 
-    def get_user_anime_list(self, username="@me", sort=None):
+    def get_user_anime_list(self, username="@me", sort=None, limit=100):
         uri = f'users/{username}/animelist'
         sort_options = [
             "list_score", "list_updated_at", "anime_title", "anime_start_date",
@@ -37,7 +37,7 @@ class MyList():
         ]
         if sort not in sort_options:
             sort = "list_score"
-        params = {"sort": sort, "limit": 100, "fields": "list_status"}
+        params = {"sort": sort, "limit": limit, "fields": "list_status"}
         return self._api_handler.call(uri=uri, params=params)
 
     def get_user_info(self, user_id="@me"):
@@ -46,8 +46,8 @@ class MyList():
         return self._api_handler.call(uri)
 
     def update_manga_my_list_status(self, manga_id, data):
-        """ 
-        Updates myanimelist status for a given manga, takes payload as dictionary as argument. 
+        """
+        Updates myanimelist status for a given manga, takes payload as dictionary as argument.
         Emit fields to not update. Returns response object.
         example input for data:
             data = {
