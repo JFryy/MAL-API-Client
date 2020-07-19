@@ -92,36 +92,39 @@ class Client(Anime, Manga, MyList, Boards):
 
     # retrieve oauth bearer token via username and password... leave this out of the initialization process and leave a seperate method for setting bearer token stuff, this is gross!!!
     @staticmethod
-    def get_bearer_token(client_id, client_secret, code, code_verifier):
+    def get_bearer_token(client_id, code, code_verifier, client_secret=None):
         base_url = "https://myanimelist.net/v1/"
         uri = "oauth2/token"
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         api_handler = APICaller(base_url=base_url, headers=headers)
         data = {
             "client_id": client_id,
-            "client_secret": client_secret,
             "code": code,
             "code_verifier": code_verifier,
             "grant_type": "authorization_code"
         }
 
+        if client_secret:
+            data["client_secret"] = client_secret
+
         return api_handler.call(uri=uri, method="post", data=data)
 
-    def refresh_bearer_token(self, client_id, client_secret, refresh_token):
+    def refresh_bearer_token(self, client_id, refresh_token, client_secret=None):
         base_url = "https://myanimelist.net/v1/"
         uri = "oauth2/token"
         headers = {
             'Authorization': f'Bearer {self.bearer_token}',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'basic {}'
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
         api_handler = APICaller(base_url=base_url, headers=headers)
         data = {
             "grant_type": "refresh_token",
             "refresh_token": refresh_token,
-            "client_id": client_id,
-            "client_secret": client_secret
+            "client_id": client_id
         }
+
+        if client_secret:
+            data["client_secret"] = client_secret
 
         # print response json of authentication, reinstantiate caller method.
         response = api_handler.call(uri=uri, method="post", data=data)
