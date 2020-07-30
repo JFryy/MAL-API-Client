@@ -1,9 +1,9 @@
 # MAL-API-Client
-A third party object oriented python client library for MyAnimeList's newly released official REST API.
+A third party object oriented python3 client library for MyAnimeList's newly released official REST API.
 
 ## Installation
 
-`pip3 install malclient --user`
+`pip install malclient --user`
 
 
 ## Authentication
