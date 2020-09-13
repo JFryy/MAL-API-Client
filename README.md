@@ -23,7 +23,7 @@ If this client library is being used in a long running context, you may want to 
  client.refresh_bearer_token(
             client_id="<your-client-id>",
             client_secret="<your-client-secret>",
-            refresh_token="<your-refresh-token>"))
+            refresh_token="<your-refresh-token>")
 ```
 
 For any other issues regarding authentication, [please refer to the following guide](https://myanimelist.net/blog.php?eid=835707). There are some potential plans in the future for more simple authentication methods, however for now this seems to be the method sanctioned by MyAnimeList.
