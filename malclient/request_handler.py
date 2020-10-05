@@ -33,7 +33,6 @@ class APICaller(object):
                         if "list_status" in json_obj:
                             for i in json_obj["list_status"]:
                                 new_dict[i] = json_obj["list_status"][i]
-                        list_reponse.append(JsonResponse(new_dict))
                         if "ranking" in json_obj:
                             for i in json_obj["ranking"]:
                                 new_dict[i] = json_obj["ranking"][i]
