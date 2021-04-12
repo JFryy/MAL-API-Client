@@ -18,9 +18,10 @@ class Manga():
         return self._api_handler.call(uri, params=params)
 
     def get_manga_ranking(self, ranking_type="manga", limit=20):
+        uri = 'manga/ranking'
         ranking_types = [
             "novels", "oneshots", "doujin", "manhwa", "manhua", "bypopularity",
-            "favorite"
+            "favorite", "manga"
         ]
 
         if ranking_type not in ranking_types:
